@@ -1,0 +1,13 @@
+/* === LAYOUT === */
+#board {
+    display: grid;
+    grid-template-columns: repeat(4, 75px);
+    grid-template-rows: repeat(4, 75px);
+    grid-gap: 2px;
+}
+/* === TEMP STYLING === */
+.card {
+    border: 2px solid black;
+    width: 75px;
+    height: 75px;
+}
