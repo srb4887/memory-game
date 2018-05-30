@@ -1,3 +1,8 @@
+/* === COUNTER === */
+let count = 0;
+const currentCount = document.getElementById('currentCount');
+
+
 /* === FLIPPING CARDS === */
 const board = document.getElementById('board');
 const cards = document.getElementsByClassName('card');
@@ -14,6 +19,8 @@ const cardFronts = document.getElementsByClassName('card-front');
         cardBack.addEventListener('click', function(event) {
             event.target.style.zIndex = '-2';
             event.target.previousElementSibling.classList.add('selected');
+            count += 1;
+            currentCount.innerText = count;
         });
     }
 
