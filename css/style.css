@@ -39,3 +39,13 @@
     border: 3px solid black;
     background: white;
 }
+
+.matched {
+    border: 3px solid green;
+    background: lightgreen;
+}
+
+.not-matched {
+    border: 3px solid red;
+    background: rgb(243, 101, 101);
+}
