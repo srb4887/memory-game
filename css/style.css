@@ -30,3 +30,12 @@
     z-index: 0;
 }
 
+.hover {
+    border: 3px solid white;
+    background: lightblue;
+}
+
+.selected {
+    border: 3px solid black;
+    background: white;
+}
