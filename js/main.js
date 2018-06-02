@@ -101,3 +101,21 @@ function shuffle() {
 
 shuffle();
 
+/* === Restart === */
+const restartBtn = document.getElementById('restart');
+
+restartBtn.addEventListener('click', function() {
+    count = 0;
+    currentCount.innerText = count;
+    matchCount = 0;
+
+    for(let cardBack of cardBacks) {
+        cardBack.className = 'card-back';
+        cardBack.style.zIndex = '0';
+    }
+    for(let cardFront of cardFronts) {
+        cardFront.className = 'card-front';
+    }
+
+    shuffle();
+});
