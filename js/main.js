@@ -70,3 +70,34 @@ board.addEventListener('click', function() {
         }
     }
 });
+
+/* === SHUFFLING CARDS === */
+function shuffle() {
+    let symbols = ['fas fa-heart', 'fas fa-star', 'fas fa-cloud', 'fas fa-frog', 'fas fa-chess-rook', 'fas fa-chess-king', 'far fa-eye-slash', 'fas fa-crow', 'fas fa-heart', 'fas fa-star', 'fas fa-cloud', 'fas fa-frog', 'fas fa-chess-rook', 'fas fa-chess-king', 'far fa-eye-slash', 'fas fa-crow'];
+
+    // Randomize Symbols Array
+    /*
+    Fisher-Yates Algorithm adapted from the following tutorial.
+    Tutorial: https://www.kirupa.com/html5/shuffling_array_js.htm
+    */
+    for (let i = symbols.length - 1; i >= 0; i--) {
+        let index = Math.floor(Math.random() * (i + 1));
+        let symbol = symbols[index];
+
+        symbols[index] = symbols[i];
+        symbols[i] = symbol;
+    }
+        
+
+    console.log(symbols);
+    // Assign Symbols
+    let cardCount = 0;
+    for(let cardFront of cardFronts) {
+        let icon = cardFront.firstElementChild;
+        icon.className = symbols[cardCount];
+        cardCount++;
+    }
+};
+
+shuffle();
+
