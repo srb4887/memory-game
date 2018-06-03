@@ -40,26 +40,19 @@ board.addEventListener('click', function() {
         startTimer();
     }
     if (count > 1 && count % 2 === 0) {
-        console.log(count);
-        console.log("There might be a match!");
         let selectedCard1 = selectedCards[0];
         let selectedCard2 = selectedCards[1];
         let symbol1 = selectedCard1.firstElementChild.className;
         let symbol2 = selectedCard2.firstElementChild.className;
-        console.log(symbol1);
-        console.log(symbol2);
         if (symbol1 === symbol2) {
-            console.log("It's a match!");
             selectedCard1.classList.add('matched');
             selectedCard2.classList.add('matched');
             selectedCard1.classList.remove('selected');
             selectedCard2.classList.remove('selected');
             matchCount += 1;
-            console.log(matchCount + " matches!");
             starCheck();
             winCheck();
         } if (symbol1 !== symbol2) {
-            console.log("Not a match!");
             selectedCard1.classList.add('not-matched');
             selectedCard2.classList.add('not-matched');
             selectedCard1.nextElementSibling.style.display = 'none';
@@ -99,8 +92,6 @@ function shuffle() {
         symbols[i] = symbol;
     }
         
-
-    console.log(symbols);
     // Assign Symbols
     let cardCount = 0;
     for(let cardFront of cardFronts) {
