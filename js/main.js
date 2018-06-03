@@ -56,6 +56,7 @@ board.addEventListener('click', function() {
             selectedCard2.classList.remove('selected');
             matchCount += 1;
             console.log(matchCount + " matches!");
+            winCheck();
         } if (symbol1 !== symbol2) {
             console.log("Not a match!");
             selectedCard1.classList.add('not-matched');
@@ -112,6 +113,7 @@ restartBtn.addEventListener('click', function() {
     count = 0;
     currentCount.innerText = count;
     matchCount = 0;
+    document.getElementById('time').innerHTML = '00:00';
 
     for(let cardBack of cardBacks) {
         cardBack.className = 'card-back';
@@ -153,7 +155,40 @@ function startTimer() {
 
         if (matchCount === 8) {
             finalTime = mins + ":" + secs;
+            finalTimeDisp.innerHTML = finalTime;
             clearInterval(timeCounter);
         }
     }, 1000);
 };
+
+/* === Winning === */
+let modal = document.getElementById('modal');
+let finalCountDisp = document.getElementById('final-count');
+let finalTimeDisp = document.getElementById('final-time');
+
+function winCheck() {
+    if (matchCount === 8) {
+        modal.style.display = "block";
+        finalCountDisp.innerHTML = count;
+    };
+};
+
+const againBtn = document.getElementById('again');
+
+againBtn.addEventListener('click', function() {
+    count = 0;
+    currentCount.innerText = count;
+    matchCount = 0;
+    document.getElementById('time').innerHTML = '00:00';
+
+    for(let cardBack of cardBacks) {
+        cardBack.className = 'card-back';
+        cardBack.style.zIndex = '0';
+    }
+    for(let cardFront of cardFronts) {
+        cardFront.className = 'card-front';
+    }
+
+    shuffle();
+    modal.style.display = "none";
+});

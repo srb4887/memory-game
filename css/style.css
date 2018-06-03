@@ -4,6 +4,7 @@
     grid-template-columns: repeat(4, 75px);
     grid-template-rows: repeat(4, 75px);
     grid-gap: 2px;
+    width: 320px;
 }
 
 /* === TEMP STYLING === */
@@ -48,4 +49,17 @@
 .not-matched {
     border: 3px solid red;
     background: rgb(243, 101, 101);
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    overflow: auto;
+    border: 2px solid black;
+}
+
+#message {
+    background-color: gray;
 }
