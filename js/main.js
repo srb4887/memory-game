@@ -62,11 +62,15 @@ board.addEventListener('click', function() {
             console.log("Not a match!");
             selectedCard1.classList.add('not-matched');
             selectedCard2.classList.add('not-matched');
+            selectedCard1.nextElementSibling.style.display = 'none';
+            selectedCard2.nextElementSibling.style.display = 'none';
             setTimeout(function() {
                 selectedCard1.classList.remove('not-matched');
                 selectedCard2.classList.remove('not-matched');
                 selectedCard1.nextElementSibling.style.zIndex = '0';
                 selectedCard2.nextElementSibling.style.zIndex = '0';
+                selectedCard1.nextElementSibling.style.display = 'initial';
+                selectedCard2.nextElementSibling.style.display = 'initial';
             }, 1000);
             selectedCard1.classList.add('not-matched');
             selectedCard2.classList.add('not-matched');
