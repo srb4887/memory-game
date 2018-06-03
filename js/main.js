@@ -56,6 +56,7 @@ board.addEventListener('click', function() {
             selectedCard2.classList.remove('selected');
             matchCount += 1;
             console.log(matchCount + " matches!");
+            starCheck();
             winCheck();
         } if (symbol1 !== symbol2) {
             console.log("Not a match!");
@@ -71,6 +72,7 @@ board.addEventListener('click', function() {
             selectedCard2.classList.add('not-matched');
             selectedCard1.classList.remove('selected');
             selectedCard2.classList.remove('selected');
+            starCheck();
         }
     }
 });
@@ -114,6 +116,7 @@ restartBtn.addEventListener('click', function() {
     currentCount.innerText = count;
     matchCount = 0;
     document.getElementById('time').innerHTML = '00:00';
+    stars.innerHTML = '<i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star">';
 
     for(let cardBack of cardBacks) {
         cardBack.className = 'card-back';
@@ -161,15 +164,28 @@ function startTimer() {
     }, 1000);
 };
 
+/* === Star Rating === */
+let stars = document.getElementById('stars');
+
+function starCheck() {
+    if (count > 16 && count <= 24) {
+        stars.innerHTML = '<i class="fas fa-star"><i class="fas fa-star"></i><i class="far fa-star"></i>';
+    }else if (count > 32) {
+        stars.innerHTML = '<i class="fas fa-star"><i class="far fa-star"></i><i class="far fa-star"></i>';
+    }
+}
+
 /* === Winning === */
 let modal = document.getElementById('modal');
 let finalCountDisp = document.getElementById('final-count');
 let finalTimeDisp = document.getElementById('final-time');
+let finalRating = document.getElementById('final-rating');
 
 function winCheck() {
     if (matchCount === 8) {
         modal.style.display = "block";
         finalCountDisp.innerHTML = count;
+        finalRating.innerHTML = stars.innerHTML;
     };
 };
 
@@ -180,6 +196,7 @@ againBtn.addEventListener('click', function() {
     currentCount.innerText = count;
     matchCount = 0;
     document.getElementById('time').innerHTML = '00:00';
+    stars.innerHTML = '<i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star">';
 
     for(let cardBack of cardBacks) {
         cardBack.className = 'card-back';
