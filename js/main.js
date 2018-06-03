@@ -36,7 +36,10 @@ for(let cardBack of cardBacks) {
 let selectedCards = document.getElementsByClassName("selected");
 
 board.addEventListener('click', function() {
-    if (count > 0 && count % 2 === 0) {
+    if (count === 1) {
+        startTimer();
+    }
+    if (count > 1 && count % 2 === 0) {
         console.log(count);
         console.log("There might be a match!");
         let selectedCard1 = selectedCards[0];
@@ -78,6 +81,7 @@ function shuffle() {
     // Randomize Symbols Array
     /*
     Fisher-Yates Algorithm adapted from the following tutorial.
+    It seemed like the best option.
     Tutorial: https://www.kirupa.com/html5/shuffling_array_js.htm
     */
     for (let i = symbols.length - 1; i >= 0; i--) {
@@ -119,3 +123,37 @@ restartBtn.addEventListener('click', function() {
 
     shuffle();
 });
+
+/* === Timer === */
+let finalTime = 0;
+function startTimer() {
+    /* 
+    Timer function adapted from W3Schools How To
+    Link: https://www.w3schools.com/howto/howto_js_countdown.asp
+    */
+
+    // Get current time to set as start
+    let start = new Date().getTime();
+    
+    let timeCounter = setInterval(function() {
+        let now = new Date().getTime();
+        // Compare difference between new current time & start time
+        let diff = now - start;
+        let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        let secs = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        if (mins < 10) {
+            mins = "0" + mins;
+        }
+        if (secs < 10) {
+            secs = "0" +secs;
+        }
+        
+        document.getElementById('time').innerHTML = mins + ":" + secs;
+
+        if (matchCount === 8) {
+            finalTime = mins + ":" + secs;
+            clearInterval(timeCounter);
+        }
+    }, 1000);
+};
