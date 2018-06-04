@@ -22,16 +22,6 @@ for(let cardBack of cardBacks) {
     });
 }
 
-/* === HOVER EFFECT === */
-for(let cardBack of cardBacks) {
-    cardBack.addEventListener('mouseenter', function(event) {
-        event.target.classList.add('hover');
-    });
-    cardBack.addEventListener('mouseleave', function(event) {
-        event.target.classList.remove('hover');
-    });
-}
-
 /* === MATCHING CARDS === */
 let selectedCards = document.getElementsByClassName("selected");
 
@@ -104,12 +94,14 @@ function shuffle() {
 shuffle();
 
 /* === Restart === */
-const restartBtn = document.getElementById('restart');
+const restartBtn = document.getElementById('restart-btn');
 
 restartBtn.addEventListener('click', function() {
     count = 0;
     currentCount.innerText = count;
     matchCount = 0;
+    finalTime = 0;
+    finalTimeDisp.innerHTML = '00:00';
     document.getElementById('time').innerHTML = '00:00';
     stars.innerHTML = '<i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star">';
 
@@ -131,7 +123,7 @@ function startTimer() {
     Timer function adapted from W3Schools How To
     Link: https://www.w3schools.com/howto/howto_js_countdown.asp
     */
-
+    if (count === 1) {
     // Get current time to set as start
     let start = new Date().getTime();
     
@@ -156,7 +148,12 @@ function startTimer() {
             finalTimeDisp.innerHTML = finalTime;
             clearInterval(timeCounter);
         }
+
+        restartBtn.addEventListener('click', function() {
+            clearInterval(timeCounter);
+        })
     }, 1000);
+    }
 };
 
 /* === Star Rating === */
