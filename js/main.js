@@ -39,6 +39,8 @@ board.addEventListener('click', function() {
             selectedCard2.classList.add('matched');
             selectedCard1.classList.remove('selected');
             selectedCard2.classList.remove('selected');
+            selectedCard1.nextElementSibling.style.display = 'none';
+            selectedCard2.nextElementSibling.style.display = 'none';
             matchCount += 1;
             moveCount += 1;
             currentCount.innerText = moveCount;
@@ -113,6 +115,7 @@ restartBtn.addEventListener('click', function() {
     for(let cardBack of cardBacks) {
         cardBack.className = 'card-back';
         cardBack.style.zIndex = '0';
+        cardBack.style.display = 'initial';
     }
     for(let cardFront of cardFronts) {
         cardFront.className = 'card-front';
@@ -199,6 +202,7 @@ againBtn.addEventListener('click', function() {
     for(let cardBack of cardBacks) {
         cardBack.className = 'card-back';
         cardBack.style.zIndex = '0';
+        cardBack.style.display = 'initial';
     }
     for(let cardFront of cardFronts) {
         cardFront.className = 'card-front';

@@ -1,1 +1,105 @@
 /* RESPONSIVE STYLING */
+
+@media screen and (min-width: 699px){
+    /* === LAYOUT === */
+    #board {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(130px, auto));
+        grid-template-rows: repeat(4, minmax(130px, auto));
+        grid-gap: 15px;
+    }
+
+    /* === STYLING === */
+    /* === Cards === */
+    #board {
+        margin-top: 20px;
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-back {
+        border: 3px solid black;
+    }
+
+    .card-back:hover {
+        border: 3px solid white;
+    }
+    
+    .selected {
+        border: 3px solid black;
+    }
+    
+    .matched {
+        border: 4px solid green;
+    }
+
+    @keyframes match {
+        0%, 100% {
+            width: 130px;
+            height: 130px;
+        }
+    
+        50% {
+            width: 140px;
+            height: 140px;
+        }
+    }
+
+    .not-matched {
+        border: 4px solid red;
+    }
+
+    .card-front i {
+        font-size: 4em;
+    }
+
+    /* === Header === */
+    #heading {
+        width: 600px;
+    }
+    #title {
+        font-size: 4em;
+        margin: 10px 0 0 0;
+    }
+
+    #timer {
+        width: 160px;
+        border: 2px solid black;
+        font-size: 2em;
+        margin: 0 auto;
+    }
+
+    #moves, #rating {
+        font-size: 2em;
+    }
+
+    #restart-btn {
+        width: 160px;
+        height: 50px;
+        border: 2px solid black;
+        font-size: 2em;
+    }
+
+    #restart-btn p {
+        padding-left: 10px;
+    }
+
+    #restart {
+        padding-left: 10px;
+    }
+
+    /* === Modal === */
+    #message {
+        font-size: 2em;
+        margin: 40px 100px;
+        border: 3px solid gold;
+        padding-bottom: 10px;
+    }
+
+    #again-btn {
+        width: 240px;
+        height: 60px;
+        border: 2px solid black;
+    }
+}
