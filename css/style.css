@@ -7,20 +7,21 @@
 }
 
 /* === STYLING === */
-/* === Body === */
+/* === BODY === */
 body {
     /* Background created with http://www.heropatterns.com */
     background-color: #e1dd8f;
     background-image: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234c86a8' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 0h35v35H0V0zm5 5h25v25H5V5zm5 5h15v15H10V10zm5 5h5v5h-5v-5zM40 5h25v25H40V5zm5 5h15v15H45V10zm5 5h5v5h-5v-5zM70 35H35v35h35V35zm-5 5H40v25h25V40zm-5 5H45v15h15V45zm-5 5h-5v5h5v-5zM30 40H5v25h25V40zm-5 5H10v15h15V45zm-5 5h-5v5h5v-5z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* === Cards === */
+/* === CARDS === */
 #board {
     margin-top: 10px;
     width: 300px;
     margin-left: auto;
     margin-right: auto;
 }
+
 .card {
     position: relative;
     width: 100%;
@@ -43,7 +44,7 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #4C86A8;
+    background-color: #4c86a8;
     z-index: 0;
     border: 2px solid black;
     border-radius: 10px;
@@ -56,7 +57,7 @@ body {
 
 .selected {
     border: 2px solid black;
-    background-color: #E1DD8F;
+    background-color: #e1dd8f;
 }
 
 .matched {
@@ -112,7 +113,7 @@ body {
     font-size: 3em;
 }
 
-/* === Header === */
+/* === HEADER === */
 header {
     display: grid;
     width: 300px;
@@ -120,9 +121,10 @@ header {
     margin-right: auto;
     background: rgba(255, 255, 255, 0.2);
 }
+
 #title {
     font-size: 2.5em;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: "Luckiest Guy", cursive;
     margin: 0 0 10px 0;
     justify-self: center;
     align-self: center;
@@ -178,7 +180,7 @@ header {
     align-self: center;
 }
 
-/* === Modal === */
+/* === MODAL === */
 #modal {
     display: none;
     position: fixed;
@@ -189,7 +191,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #E1DD8F;
+    background-color: #e1dd8f;
     font-size: 1.1em;
     margin: 10px 35px;
     border: 2px solid gold;
