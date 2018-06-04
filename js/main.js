@@ -1,6 +1,7 @@
 /* === COUNTER === */
 let count = 0;
 let matchCount = 0;
+let moveCount = 0;
 const currentCount = document.getElementById('currentCount');
 
 /* === FLIPPING CARDS === */
@@ -18,7 +19,6 @@ for(let cardBack of cardBacks) {
         }
 
         count += 1;
-        currentCount.innerText = count;
     });
 }
 
@@ -40,9 +40,13 @@ board.addEventListener('click', function() {
             selectedCard1.classList.remove('selected');
             selectedCard2.classList.remove('selected');
             matchCount += 1;
+            moveCount += 1;
+            currentCount.innerText = moveCount;
             starCheck();
             winCheck();
         } if (symbol1 !== symbol2) {
+            moveCount += 1;
+            currentCount.innerText = moveCount;
             selectedCard1.classList.add('not-matched');
             selectedCard2.classList.add('not-matched');
             selectedCard1.nextElementSibling.style.display = 'none';
@@ -98,7 +102,8 @@ const restartBtn = document.getElementById('restart-btn');
 
 restartBtn.addEventListener('click', function() {
     count = 0;
-    currentCount.innerText = count;
+    moveCount = 0;
+    currentCount.innerText = moveCount;
     matchCount = 0;
     finalTime = 0;
     finalTimeDisp.innerHTML = '00:00';
@@ -176,7 +181,7 @@ let finalRating = document.getElementById('final-rating');
 function winCheck() {
     if (matchCount === 8) {
         modal.style.display = "block";
-        finalCountDisp.innerHTML = count;
+        finalCountDisp.innerHTML = moveCount;
         finalRating.innerHTML = stars.innerHTML;
     };
 };
@@ -185,7 +190,8 @@ const againBtn = document.getElementById('again-btn');
 
 againBtn.addEventListener('click', function() {
     count = 0;
-    currentCount.innerText = count;
+    moveCount= 0;
+    currentCount.innerText = moveCount;
     matchCount = 0;
     document.getElementById('time').innerHTML = '00:00';
     stars.innerHTML = '<i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star">';
