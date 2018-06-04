@@ -2,15 +2,15 @@
 let count = 0;
 let matchCount = 0;
 let moveCount = 0;
-const currentCount = document.getElementById('currentCount');
+const CURRENT_COUNT = document.getElementById('current-count');
 
 /* === FLIPPING CARDS === */
-const cardBacks = document.getElementsByClassName('card-back');
-const cardFronts = document.getElementsByClassName('card-front');
-let notMatchedCards = document.getElementsByClassName("not-matched");
-const board = document.getElementById('board');
+const CARD_BACKS = document.getElementsByClassName('card-back');
+const CARD_FRONTS = document.getElementsByClassName('card-front');
+let notMatchedCards = document.getElementsByClassName('not-matched');
+const BOARD = document.getElementById('board');
 
-for(let cardBack of cardBacks) {
+for(let cardBack of CARD_BACKS) {
     cardBack.addEventListener('click', function(event) {
         event.target.style.zIndex = '-2';
 
@@ -23,9 +23,9 @@ for(let cardBack of cardBacks) {
 }
 
 /* === MATCHING CARDS === */
-let selectedCards = document.getElementsByClassName("selected");
+let selectedCards = document.getElementsByClassName('selected');
 
-board.addEventListener('click', function() {
+BOARD.addEventListener('click', function() {
     if (count === 1) {
         startTimer();
     }
@@ -43,12 +43,12 @@ board.addEventListener('click', function() {
             selectedCard2.nextElementSibling.style.display = 'none';
             matchCount += 1;
             moveCount += 1;
-            currentCount.innerText = moveCount;
+            CURRENT_COUNT.innerText = moveCount;
             starCheck();
             winCheck();
         } if (symbol1 !== symbol2) {
             moveCount += 1;
-            currentCount.innerText = moveCount;
+            CURRENT_COUNT.innerText = moveCount;
             selectedCard1.classList.add('not-matched');
             selectedCard2.classList.add('not-matched');
             selectedCard1.nextElementSibling.style.display = 'none';
@@ -72,7 +72,24 @@ board.addEventListener('click', function() {
 
 /* === SHUFFLING CARDS === */
 function shuffle() {
-    let symbols = ['fas fa-heart', 'fas fa-star', 'fas fa-cloud', 'fas fa-frog', 'fas fa-chess-rook', 'fas fa-chess-king', 'far fa-eye-slash', 'fas fa-crow', 'fas fa-heart', 'fas fa-star', 'fas fa-cloud', 'fas fa-frog', 'fas fa-chess-rook', 'fas fa-chess-king', 'far fa-eye-slash', 'fas fa-crow'];
+    let symbols = [
+        'fas fa-heart',
+        'fas fa-star',
+        'fas fa-cloud',
+        'fas fa-frog',
+        'fas fa-chess-rook',
+        'fas fa-chess-king',
+        'far fa-eye-slash',
+        'fas fa-crow',
+        'fas fa-heart',
+        'fas fa-star',
+        'fas fa-cloud',
+        'fas fa-frog',
+        'fas fa-chess-rook',
+        'fas fa-chess-king',
+        'far fa-eye-slash',
+        'fas fa-crow'
+    ];
 
     // Randomize Symbols Array
     /*
@@ -90,7 +107,7 @@ function shuffle() {
         
     // Assign Symbols
     let cardCount = 0;
-    for(let cardFront of cardFronts) {
+    for(let cardFront of CARD_FRONTS) {
         let icon = cardFront.firstElementChild;
         icon.className = symbols[cardCount];
         cardCount++;
@@ -100,24 +117,24 @@ function shuffle() {
 shuffle();
 
 /* === Restart === */
-const restartBtn = document.getElementById('restart-btn');
+const RESTART_BTN = document.getElementById('restart-btn');
 
-restartBtn.addEventListener('click', function() {
+RESTART_BTN.addEventListener('click', function() {
     count = 0;
     moveCount = 0;
-    currentCount.innerText = moveCount;
+    CURRENT_COUNT.innerText = moveCount;
     matchCount = 0;
     finalTime = 0;
     finalTimeDisp.innerHTML = '00:00';
     document.getElementById('time').innerHTML = '00:00';
     stars.innerHTML = '<i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star">';
 
-    for(let cardBack of cardBacks) {
+    for(let cardBack of CARD_BACKS) {
         cardBack.className = 'card-back';
         cardBack.style.zIndex = '0';
         cardBack.style.display = 'initial';
     }
-    for(let cardFront of cardFronts) {
+    for(let cardFront of CARD_FRONTS) {
         cardFront.className = 'card-front';
     }
 
@@ -143,21 +160,21 @@ function startTimer() {
         let secs = Math.floor((diff % (1000 * 60)) / 1000);
         
         if (mins < 10) {
-            mins = "0" + mins;
+            mins = '0' + mins;
         }
         if (secs < 10) {
-            secs = "0" +secs;
+            secs = '0' +secs;
         }
         
-        document.getElementById('time').innerHTML = mins + ":" + secs;
+        document.getElementById('time').innerHTML = mins + ':' + secs;
 
         if (matchCount === 8) {
-            finalTime = mins + ":" + secs;
+            finalTime = mins + ':' + secs;
             finalTimeDisp.innerHTML = finalTime;
             clearInterval(timeCounter);
         }
 
-        restartBtn.addEventListener('click', function() {
+        RESTART_BTN.addEventListener('click', function() {
             clearInterval(timeCounter);
         })
     }, 1000);
@@ -183,31 +200,31 @@ let finalRating = document.getElementById('final-rating');
 
 function winCheck() {
     if (matchCount === 8) {
-        modal.style.display = "block";
+        modal.style.display = 'block';
         finalCountDisp.innerHTML = moveCount;
         finalRating.innerHTML = stars.innerHTML;
     };
 };
 
-const againBtn = document.getElementById('again-btn');
+const AGAIN_BTN = document.getElementById('again-btn');
 
-againBtn.addEventListener('click', function() {
+AGAIN_BTN.addEventListener('click', function() {
     count = 0;
     moveCount= 0;
-    currentCount.innerText = moveCount;
+    CURRENT_COUNT.innerText = moveCount;
     matchCount = 0;
     document.getElementById('time').innerHTML = '00:00';
     stars.innerHTML = '<i class="fas fa-star"><i class="fas fa-star"></i><i class="fas fa-star">';
 
-    for(let cardBack of cardBacks) {
+    for(let cardBack of CARD_BACKS) {
         cardBack.className = 'card-back';
         cardBack.style.zIndex = '0';
         cardBack.style.display = 'initial';
     }
-    for(let cardFront of cardFronts) {
+    for(let cardFront of CARD_FRONTS) {
         cardFront.className = 'card-front';
     }
 
     shuffle();
-    modal.style.display = "none";
+    modal.style.display = 'none';
 });
