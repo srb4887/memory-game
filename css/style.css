@@ -113,7 +113,7 @@ body {
 }
 
 /* === Header === */
-#heading {
+header {
     display: grid;
     width: 300px;
     margin-left: auto;
