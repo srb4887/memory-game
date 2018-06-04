@@ -181,7 +181,7 @@ function winCheck() {
     };
 };
 
-const againBtn = document.getElementById('again');
+const againBtn = document.getElementById('again-btn');
 
 againBtn.addEventListener('click', function() {
     count = 0;

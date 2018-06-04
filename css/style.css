@@ -183,11 +183,44 @@ body {
     display: none;
     position: fixed;
     z-index: 1;
-    width: 100%;
-    overflow: auto;
-    border: 2px solid black;
 }
 
 #message {
-    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #E1DD8F;
+    font-size: 1.1em;
+    margin: 10px 35px;
+    border: 2px solid gold;
+    border-radius: 5px;
+    padding-bottom: 5px;
+}
+
+#message p {
+    text-align: center;
+    margin: 5px 10px;
+}
+
+#again-btn {
+    margin: 0 auto 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background: rgba(187, 187, 187, 0.8);
+}
+
+#again-btn p {
+    margin: 0;
+    padding-left: 5px;
+    align-self: center;
+}
+
+#again {
+    margin: 0;
+    padding-left: 5px;
+    align-self: center;
 }
